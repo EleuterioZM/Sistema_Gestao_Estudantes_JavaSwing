@@ -1,8 +1,11 @@
+package Guradado;
+
 
 import GUI.Avaliacao;
 import GUI.Curso;
 import GUI.Disciplina;
 import GUI.Estudante;
+import GUI.Turma;
 import java.awt.Window;
 import javax.swing.SwingUtilities;
 
@@ -231,22 +234,14 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-            Window currentWindow = SwingUtilities.getWindowAncestor(this);
+          this.dispose();
     
-    // Oculta a janela atual
-    currentWindow.setVisible(false);
+    // Criar uma instância da página Estudante
+        Turma Turma = new Turma();
     
-    // Cria uma instância da página Curso
-    Curso cursoPage = new Curso();
-    
-    // Adiciona um WindowListener para ouvir o evento de fechamento da janela Curso
-    cursoPage.addWindowListener(new java.awt.event.WindowAdapter() {
-        @Override
-        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-            // Mostra novamente a janela atual quando a janela Curso for fechada
-            currentWindow.setVisible(true);
-        }
-    });
+    // Tornar a página Estudante visível
+    Turma.setVisible(true);
+                           
     
     }//GEN-LAST:event_jButton2ActionPerformed
 
