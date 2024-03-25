@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-/**
- *
- * @author Eleuterio_Mabecuane
- */
 public class Avaliacao {
     private int id;
     private String descricao;
     private double peso;
-    private double nota; // Adicionando a propriedade nota
+
+    public Avaliacao() {
+       
+    }
 
     public int getId() {
         return id;
@@ -25,11 +19,6 @@ public class Avaliacao {
 
     public String getDescricao() {
         return descricao;
-    }
-
-    @Override
-    public String toString() {
-        return "Avaliacao{" + "id=" + id + ", descricao=" + descricao + ", peso=" + peso + ", nota=" + nota + '}';
     }
 
     public void setDescricao(String descricao) {
@@ -44,20 +33,15 @@ public class Avaliacao {
         this.peso = peso;
     }
 
-    public double getNota() {
-        return nota;
-    }
-
-    public void setNota(double nota) {
-        this.nota = nota;
-    }
-
-    // Construtor, getters e setters
-
-    public Avaliacao(int id, String descricao, double peso, double nota) {
+    public Avaliacao(int id, String descricao, double peso) {
         this.id = id;
         this.descricao = descricao;
         this.peso = peso;
-        this.nota = nota;
     }
+
+    @Override
+    public String toString() {
+        return "Avaliacao{" + "id=" + id + ", descricao=" + descricao + ", peso=" + peso + '}';
+    }
+
 }

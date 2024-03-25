@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import DAO.DisciplinaDAO;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Eleuterio_Mabecuane
@@ -38,12 +42,12 @@ public class Disciplina extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        campoCurso = new javax.swing.JTextField();
+        IDDisciplina = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        campoNomeCurso = new javax.swing.JTextField();
+        NomedaDisciplina = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        campoNomeCurso1 = new javax.swing.JTextField();
-        campoNomeCurso2 = new javax.swing.JTextField();
+        CHSdaDisciplina = new javax.swing.JTextField();
+        CreditodaDisciplina = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela = new javax.swing.JTable();
@@ -160,24 +164,24 @@ public class Disciplina extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
         jLabel4.setText("Nome da Disciplina");
 
-        campoNomeCurso.addActionListener(new java.awt.event.ActionListener() {
+        NomedaDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeCursoActionPerformed(evt);
+                NomedaDisciplinaActionPerformed(evt);
             }
         });
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
         jLabel5.setText("CHS da Disciplina");
 
-        campoNomeCurso1.addActionListener(new java.awt.event.ActionListener() {
+        CHSdaDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeCurso1ActionPerformed(evt);
+                CHSdaDisciplinaActionPerformed(evt);
             }
         });
 
-        campoNomeCurso2.addActionListener(new java.awt.event.ActionListener() {
+        CreditodaDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeCurso2ActionPerformed(evt);
+                CreditodaDisciplinaActionPerformed(evt);
             }
         });
 
@@ -284,15 +288,15 @@ public class Disciplina extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IDDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoNomeCurso1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CHSdaDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(109, 109, 109)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoNomeCurso2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CreditodaDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(NomedaDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE))
                 .addContainerGap(462, Short.MAX_VALUE))
         );
@@ -305,18 +309,18 @@ public class Disciplina extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NomedaDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IDDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(campoNomeCurso1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CHSdaDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(campoNomeCurso2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(CreditodaDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
@@ -385,14 +389,6 @@ public class Disciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    this.dispose();
-    
-    // Criar uma instância da página desejada (substitua "NomeDaPagina" pelo nome da sua classe)
-        Estudante Estudante = new Estudante();
-    
-    // Tornar a página desejada visível
-    Estudante.setVisible(true);
     
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -407,31 +403,101 @@ public class Disciplina extends javax.swing.JFrame {
     Turma.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void campoNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeCursoActionPerformed
+    private void NomedaDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomedaDisciplinaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeCursoActionPerformed
+    }//GEN-LAST:event_NomedaDisciplinaActionPerformed
 
-    private void campoNomeCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeCurso1ActionPerformed
+    private void CHSdaDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CHSdaDisciplinaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeCurso1ActionPerformed
+    }//GEN-LAST:event_CHSdaDisciplinaActionPerformed
 
-    private void campoNomeCurso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeCurso2ActionPerformed
+    private void CreditodaDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreditodaDisciplinaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeCurso2ActionPerformed
+    }//GEN-LAST:event_CreditodaDisciplinaActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-        // Verifica se todos os campos obrigatórios estão preenchidos
+      // Coletando os dados do formulário
+String idText = IDDisciplina.getText();
+String nome = NomedaDisciplina.getText();
+String chsText = CHSdaDisciplina.getText();
+String creditosText = CreditodaDisciplina.getText();
 
-        // Continue com o resto do seu código aqui...
+// Verificando se os campos estão vazios
+if (idText.isEmpty() || nome.isEmpty() || chsText.isEmpty() || creditosText.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Preencha todos os campos.", "Erro", JOptionPane.ERROR_MESSAGE);
+    return;
+}
 
-        // TODO add your handling code here:
+try {
+    // Convertendo os campos para os tipos corretos
+    int id = Integer.parseInt(idText);
+    int chs = Integer.parseInt(chsText);
+    int creditos = Integer.parseInt(creditosText);
+
+    // Verificando se o ID já existe na base de dados
+    DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+    if (disciplinaDAO.verificarIdExistente(id)) {
+        JOptionPane.showMessageDialog(this, "O ID da disciplina já existe. Por favor, escolha outro ID.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Criando um objeto Disciplina com os dados coletados
+    Model.Disciplina disciplina = new Model.Disciplina(id, nome, chs, creditos);
+
+    // Chamando o DAO para inserir a disciplina no banco de dados
+    disciplinaDAO.inserir(disciplina);
+
+    // Exibindo uma mensagem de sucesso
+    JOptionPane.showMessageDialog(this, "Disciplina salva com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+    // Limpar os campos do formulário após salvar
+    IDDisciplina.setText("");
+    NomedaDisciplina.setText("");
+    CHSdaDisciplina.setText("");
+    CreditodaDisciplina.setText("");
+
+    DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+        model.setRowCount(0);
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(this, "Certifique-se de inserir números válidos para o ID, CHS e Créditos.", "Erro", JOptionPane.ERROR_MESSAGE);
+}
+
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-        // Obtém o texto digitado no campo de pesquisa
-        String idString = campoPesquisar.getText();
+      String idDisciplinaString = campoPesquisar.getText();
 
-        // Verifica se o campo de ID não está vazio
+    if (!idDisciplinaString.isEmpty()) {
+        try {
+            int idDisciplina = Integer.parseInt(idDisciplinaString);
+            
+            DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+            
+            // Verificar se existem dados associados à disciplina antes de tentar excluir
+            if (disciplinaDAO.verificarAssociacoes(idDisciplina)) {
+                JOptionPane.showMessageDialog(this, "Existem dados associados a esta disciplina. Não é possível excluí-la.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            // Se não houver dados associados, prosseguir com a exclusão
+            disciplinaDAO.excluir(idDisciplina);
+            JOptionPane.showMessageDialog(this, "Disciplina excluída com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            
+            // Limpar os campos após excluir a disciplina
+            IDDisciplina.setText("");
+            NomedaDisciplina.setText("");  
+            CHSdaDisciplina.setText(""); 
+            CreditodaDisciplina.setText("");
+            
+            // Limpar a tabela após excluir a disciplina
+            DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+            model.setRowCount(0);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "O ID da disciplina deve ser um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Digite um ID de disciplina válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void campoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPesquisarActionPerformed
@@ -439,13 +505,44 @@ public class Disciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPesquisarActionPerformed
 
     private void botaoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarActionPerformed
-        // Recupera o valor do campo de pesquisa
+       // Obtém o ID da disciplina digitado no campo de pesquisa
+    String idDisciplinaString = campoPesquisar.getText();
+    
+    // Verifica se o campo de ID da disciplina não está vazio
+    if (!idDisciplinaString.isEmpty()) {
+        try {
+            // Converte a String do ID da disciplina para um número inteiro
+            int idDisciplina = Integer.parseInt(idDisciplinaString);
+            
+            // Cria um objeto DisciplinaDAO
+            DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+            
+            // Busca a disciplina pelo ID
+            Model.Disciplina disciplinaEncontrada = disciplinaDAO.buscarPorId(idDisciplina);
 
-        String idString = campoPesquisar.getText();
-
-        // Verifica se o campo de pesquisa não está vazio
-
-        // TODO add your handling code here:
+            // Verifica se a disciplina foi encontrada
+            if (disciplinaEncontrada != null) {
+                // Limpa o modelo da tabela
+                DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+                model.setRowCount(0); // Limpa todas as linhas da tabela
+                
+                // Adiciona a disciplina encontrada ao modelo da tabela
+                Object[] row = {disciplinaEncontrada.getId(), disciplinaEncontrada.getNome(), disciplinaEncontrada.getChs(), disciplinaEncontrada.getCredito()};
+                model.addRow(row);
+            } else {
+                // Se a disciplina não foi encontrada, exibe uma mensagem de erro
+                JOptionPane.showMessageDialog(this, "Disciplina não encontrada!");
+            }
+            
+        } catch (NumberFormatException e) {
+            // Se o ID da disciplina não puder ser convertido para um número inteiro válido,
+            // exibe uma mensagem de erro
+            JOptionPane.showMessageDialog(null, "O ID da disciplina deve ser um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        // Se o campo de ID da disciplina estiver vazio, exibe uma mensagem de erro
+        JOptionPane.showMessageDialog(null, "Digite um ID de disciplina válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    } 
     }//GEN-LAST:event_botaoPesquisarActionPerformed
 
     /**
@@ -484,14 +581,14 @@ public class Disciplina extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CHSdaDisciplina;
+    private javax.swing.JTextField CreditodaDisciplina;
+    private javax.swing.JTextField IDDisciplina;
+    private javax.swing.JTextField NomedaDisciplina;
     private javax.swing.JTable Tabela;
     private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoPesquisar;
     private javax.swing.JButton botaoSalvar;
-    private javax.swing.JTextField campoCurso;
-    private javax.swing.JTextField campoNomeCurso;
-    private javax.swing.JTextField campoNomeCurso1;
-    private javax.swing.JTextField campoNomeCurso2;
     private javax.swing.JTextField campoPesquisar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

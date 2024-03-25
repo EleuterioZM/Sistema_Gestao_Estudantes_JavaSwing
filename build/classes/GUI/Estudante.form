@@ -26,10 +26,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" pref="1304" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -227,22 +224,22 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="campoNomeCurso1" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
+                                  <Component id="EnderecodoEstudante" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" pref="166" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
-                                  <Component id="campoCurso" min="-2" pref="322" max="-2" attributes="0"/>
+                                  <Component id="NumerodeMatricula" min="-2" pref="322" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel6" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
-                                  <Component id="campoNomeCurso2" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
+                                  <Component id="TelefonedoEstudante" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
-                                  <Component id="campoNomeCurso" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
+                                  <Component id="NomedoEstudante" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel7" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
-                                  <Component id="campoNomeCurso3" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
+                                  <Component id="Apelido" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -250,7 +247,7 @@
                               <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="82" max="32767" attributes="0"/>
+                      <EmptySpace pref="184" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -264,27 +261,27 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel3" min="-2" pref="22" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Component id="campoCurso" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="NumerodeMatricula" min="-2" pref="35" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel7" min="-2" pref="15" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Component id="campoNomeCurso3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="Apelido" min="-2" pref="35" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" pref="15" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="campoNomeCurso1" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="EnderecodoEstudante" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel4" min="-2" pref="15" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="campoNomeCurso" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="NomedoEstudante" min="-2" pref="35" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" pref="15" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="campoNomeCurso2" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="TelefonedoEstudante" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -305,7 +302,7 @@
                 <Property name="text" type="java.lang.String" value="Numero de Matricula"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="campoCurso">
+            <Component class="javax.swing.JTextField" name="NumerodeMatricula">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
@@ -315,14 +312,14 @@
                 <Property name="text" type="java.lang.String" value="Endereco do Estudante"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="campoNomeCurso1">
+            <Component class="javax.swing.JTextField" name="EnderecodoEstudante">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNomeCurso1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EnderecodoEstudanteActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="campoNomeCurso2">
+            <Component class="javax.swing.JTextField" name="TelefonedoEstudante">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNomeCurso2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TelefonedoEstudanteActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
@@ -333,9 +330,9 @@
                 <Property name="text" type="java.lang.String" value="Telefone do Estudante"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="campoNomeCurso">
+            <Component class="javax.swing.JTextField" name="NomedoEstudante">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNomeCursoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NomedoEstudanteActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
@@ -346,9 +343,9 @@
                 <Property name="text" type="java.lang.String" value="Nome do Estudante"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="campoNomeCurso3">
+            <Component class="javax.swing.JTextField" name="Apelido">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNomeCurso3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ApelidoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">

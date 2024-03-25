@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import DAO.CursoDAO;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Eleuterio_Mabecuane
@@ -44,11 +48,11 @@ public class Curso extends javax.swing.JFrame {
         campoPesquisar = new javax.swing.JTextField();
         botaoPesquisar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        campoNomeCurso = new javax.swing.JTextField();
+        NomedoCurso = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela = new javax.swing.JTable();
-        campoCurso = new javax.swing.JTextField();
+        IDCurso = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -215,9 +219,9 @@ public class Curso extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        campoNomeCurso.addActionListener(new java.awt.event.ActionListener() {
+        NomedoCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeCursoActionPerformed(evt);
+                NomedoCursoActionPerformed(evt);
             }
         });
 
@@ -261,11 +265,11 @@ public class Curso extends javax.swing.JFrame {
                     .addGap(37, 37, 37)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(campoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IDCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(109, 109, 109)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(campoNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(NomedoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(440, Short.MAX_VALUE)))
         );
@@ -285,8 +289,8 @@ public class Curso extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(campoNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(NomedoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(IDCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(348, Short.MAX_VALUE)))
         );
 
@@ -341,15 +345,7 @@ public class Curso extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        
-            this.dispose();
-    
-    // Criar uma instância da página desejada (substitua "NomeDaPagina" pelo nome da sua classe)
-        Estudante Estudante = new Estudante();
-    
-    // Tornar a página desejada visível
-    Estudante.setVisible(true);
+     
     
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -377,18 +373,55 @@ public class Curso extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-        // Verifica se todos os campos obrigatórios estão preenchidos
+       // Coletando os dados do formulário
+    int id = Integer.parseInt(IDCurso.getText());
+    String nome = NomedoCurso.getText();
 
-        // Continue com o resto do seu código aqui...
+    // Criando um objeto Curso com os dados coletados
+    Model.Curso curso = new Model.Curso(id, nome);
 
-        // TODO add your handling code here:
+    // Chamando o DAO para inserir o curso no banco de dados
+    CursoDAO cursoDAO = new CursoDAO();
+    cursoDAO.inserir(curso);
+    JOptionPane.showMessageDialog(this, "Curso salvo com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+    // Limpar os campos do formulário após salvar
+    IDCurso.setText("");
+    NomedoCurso.setText("");
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-        // Obtém o texto digitado no campo de pesquisa
-        String idString = campoPesquisar.getText();
+        String idCursoString = campoPesquisar.getText();
 
-        // Verifica se o campo de ID não está vazio
+    if (!idCursoString.isEmpty()) {
+        try {
+            int idCurso = Integer.parseInt(idCursoString);
+            
+            CursoDAO cursoDAO = new CursoDAO();
+            
+            // Verificar se existem dados associados ao curso antes de tentar excluir
+            if (cursoDAO.verificarDadosAssociados(idCurso)) {
+                JOptionPane.showMessageDialog(this, "Existem dados associados a este curso. Não é possível excluí-lo.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            // Se não houver dados associados, prosseguir com a exclusão
+            cursoDAO.excluir(idCurso);
+            JOptionPane.showMessageDialog(this, "Curso excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            
+            // Limpar os campos após excluir o curso
+            IDCurso.setText("");
+            NomedoCurso.setText("");   
+            
+            // Limpar a tabela após excluir o curso
+            DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+            model.setRowCount(0);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "O ID do curso deve ser um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Digite um ID de curso válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
 
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
@@ -397,18 +430,49 @@ public class Curso extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPesquisarActionPerformed
 
     private void botaoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarActionPerformed
-        // Recupera o valor do campo de pesquisa
+    // Obtém o ID do curso digitado no campo de pesquisa
+    String idCursoString = campoPesquisar.getText();
+    
+    // Verifica se o campo de ID do curso não está vazio
+    if (!idCursoString.isEmpty()) {
+        try {
+            // Converte a String do ID do curso para um número inteiro
+            int idCurso = Integer.parseInt(idCursoString);
+            
+            // Cria um objeto CursoDAO
+            CursoDAO cursoDAO = new CursoDAO();
+            
+            // Busca o curso pelo ID
+            Model.Curso cursoEncontrado = cursoDAO.buscarPorId(idCurso);
 
-        String idString = campoPesquisar.getText();
-
-        // Verifica se o campo de pesquisa não está vazio
-
-        // TODO add your handling code here:
+            // Verifica se o curso foi encontrado
+            if (cursoEncontrado != null) {
+                // Limpa o modelo da tabela
+                DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+                model.setRowCount(0); // Limpa todas as linhas da tabela
+                
+                // Adiciona o curso encontrado ao modelo da tabela
+                Object[] row = {cursoEncontrado.getId(), cursoEncontrado.getNome()};
+                model.addRow(row);
+            } else {
+                // Se o curso não foi encontrado, exibe uma mensagem de erro
+                JOptionPane.showMessageDialog(this, "Curso não encontrado!");
+            }
+            
+        } catch (NumberFormatException e) {
+            // Se o ID do curso não puder ser convertido para um número inteiro válido,
+            // exibe uma mensagem de erro
+            JOptionPane.showMessageDialog(null, "O ID do curso deve ser um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        // Se o campo de ID do curso estiver vazio, exibe uma mensagem de erro
+        JOptionPane.showMessageDialog(null, "Digite um ID de curso válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    } 
     }//GEN-LAST:event_botaoPesquisarActionPerformed
 
-    private void campoNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeCursoActionPerformed
+    private void NomedoCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomedoCursoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeCursoActionPerformed
+    }//GEN-LAST:event_NomedoCursoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -446,12 +510,12 @@ public class Curso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField IDCurso;
+    private javax.swing.JTextField NomedoCurso;
     private javax.swing.JTable Tabela;
     private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoPesquisar;
     private javax.swing.JButton botaoSalvar;
-    private javax.swing.JTextField campoCurso;
-    private javax.swing.JTextField campoNomeCurso;
     private javax.swing.JTextField campoPesquisar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

@@ -249,14 +249,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    // Fechar a janela atual
-    this.dispose();
-    
-    // Criar uma instância da página Estudante
-    Estudante estudantePage = new Estudante();
-    
-    // Tornar a página Estudante visível
-    estudantePage.setVisible(true);
+   
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

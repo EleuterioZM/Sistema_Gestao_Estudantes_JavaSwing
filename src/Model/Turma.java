@@ -1,30 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-/**
- *
- * @author Eleuterio_Mabecuane
- */
 public class Turma {
     private int id;
     private String descricao;
 
+    // Construtor vazio
+    public Turma() {
+    }
+
+    // Construtor com todos os campos
     public Turma(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
 
-    @Override
-    public String toString() {
-        return "Turma{" + "id=" + id + ", descricao=" + descricao + '}';
-    }
-
-    // Construtor, getters e setters
-
+    // Métodos getters e setters para todos os campos
     public int getId() {
         return id;
     }
@@ -39,5 +29,14 @@ public class Turma {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    // Método toString para facilitar a visualização dos objetos Turma
+    @Override
+    public String toString() {
+        return "Turma{" +
+                "id=" + id +
+                ", descricao='" + descricao + '\'' +
+                '}';
     }
 }

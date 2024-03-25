@@ -231,11 +231,11 @@
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="campoCurso" min="-2" pref="308" max="-2" attributes="0"/>
+                                  <Component id="IDCurso" min="-2" pref="308" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel4" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
-                                      <Component id="campoNomeCurso" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
+                                      <Component id="NomedoCurso" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jLabel3" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
@@ -263,8 +263,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="campoNomeCurso" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="campoCurso" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="NomedoCurso" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="IDCurso" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="348" max="32767" attributes="0"/>
                       </Group>
@@ -375,9 +375,9 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="campoNomeCurso">
+            <Component class="javax.swing.JTextField" name="NomedoCurso">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNomeCursoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NomedoCursoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
@@ -411,7 +411,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="campoCurso">
+            <Component class="javax.swing.JTextField" name="IDCurso">
             </Component>
           </SubComponents>
         </Container>

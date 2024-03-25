@@ -5,6 +5,17 @@
  */
 package GUI;
 
+
+import DAO.AvaliacaoDAO;
+import Util.DatabaseUtil;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Eleuterio_Mabecuane
@@ -37,10 +48,10 @@ public class Avaliacao extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        campoNome = new javax.swing.JTextField();
+        IDAvalicao = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        campoTelefone = new javax.swing.JTextField();
-        campoEmail = new javax.swing.JTextField();
+        Peso = new javax.swing.JTextField();
+        Descricao = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela = new javax.swing.JTable();
@@ -50,8 +61,6 @@ public class Avaliacao extends javax.swing.JFrame {
         campoPesquisar = new javax.swing.JTextField();
         botaoPesquisar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        campoTelefone1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,17 +174,17 @@ public class Avaliacao extends javax.swing.JFrame {
         Tabela.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID Avaliacao", "Descricao", "Peso", "Nota"
+                "ID Avaliacao", "Descricao", "Peso"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -250,9 +259,6 @@ public class Avaliacao extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
-        jLabel6.setText("Nota");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -264,14 +270,12 @@ public class Avaliacao extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IDAvalicao, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(119, 119, 119)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Peso, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -292,19 +296,12 @@ public class Avaliacao extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Peso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IDAvalicao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(campoTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -362,13 +359,7 @@ public class Avaliacao extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         // TODO add your handling code here:
-         this.dispose();
-    
-    // Criar uma instância da página desejada (substitua "NomeDaPagina" pelo nome da sua classe)
-        Estudante Estudante = new Estudante();
-    
-    // Tornar a página desejada visível
-    Estudante.setVisible(true);
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -384,25 +375,56 @@ public class Avaliacao extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-        // Verifica se todos os campos obrigatórios estão preenchidos
-      
+ // Coletando os dados do formulário
+    int id = Integer.parseInt(IDAvalicao.getText());
+    String descricao = Descricao.getText();
+    double peso = Double.parseDouble(Peso.getText());
 
-        
-        // Continue com o resto do seu código aqui...
-      
-      
+    // Verificar se já existe uma avaliação com o mesmo ID
+    if (verificarIdAvaliacaoExistente(id)) {
+        JOptionPane.showMessageDialog(this, "Já existe uma avaliação com o mesmo ID. Por favor, escolha outro ID.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-        // TODO add your handling code here:
+    // Criando um objeto Avaliacao com os dados coletados
+    Model.Avaliacao avaliacao = new Model.Avaliacao(id, descricao, peso);
+
+    // Chamando o DAO para inserir a avaliação no banco de dados
+    AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAO();
+    avaliacaoDAO.inserir(avaliacao);
+    
+    // Exibir mensagem de sucesso
+    JOptionPane.showMessageDialog(this, "Avaliação salva com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+    // Limpar os campos do formulário após salvar
+    IDAvalicao.setText("");
+    Descricao.setText("");
+    Peso.setText("");      
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-        // Obtém o texto digitado no campo de pesquisa
-        String idString = campoPesquisar.getText();
+ String idAvaliacaoString = campoPesquisar.getText();
 
-        // Verifica se o campo de ID não está vazio
-      
-       
-
+    if (!idAvaliacaoString.isEmpty()) {
+        try {
+            int idAvaliacao = Integer.parseInt(idAvaliacaoString);
+            
+            AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAO();
+            avaliacaoDAO.excluir(idAvaliacao);
+            JOptionPane.showMessageDialog(this, "Avaliação excluída com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            
+           IDAvalicao.setText("");
+    Descricao.setText("");
+    Peso.setText("");   
+     // Limpar a tabela após excluir a avaliação
+                DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+                model.setRowCount(0);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "O ID da avaliação deve ser um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Digite um ID de avaliação válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void campoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPesquisarActionPerformed
@@ -411,14 +433,44 @@ public class Avaliacao extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPesquisarActionPerformed
 
     private void botaoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarActionPerformed
-        // Recupera o valor do campo de pesquisa
+ // Obtém o ID da avaliação digitado no campo de pesquisa
+    String idAvaliacaoString = campoPesquisar.getText();
+    
+    // Verifica se o campo de ID da avaliação não está vazio
+    if (!idAvaliacaoString.isEmpty()) {
+        try {
+            // Converte a String do ID da avaliação para um número inteiro
+            int idAvaliacao = Integer.parseInt(idAvaliacaoString);
+            
+            // Cria um objeto AvaliacaoDAO
+            AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAO();
+            
+            // Busca a avaliação pelo ID
+            Model.Avaliacao avaliacaoEncontrada = avaliacaoDAO.buscarPorId(idAvaliacao);
 
-        String idString = campoPesquisar.getText();
-
-        // Verifica se o campo de pesquisa não está vazio
-       
-
-        // TODO add your handling code here:
+            // Verifica se a avaliação foi encontrada
+            if (avaliacaoEncontrada != null) {
+                // Limpa o modelo da tabela
+                DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+                model.setRowCount(0); // Limpa todas as linhas da tabela
+                
+                // Adiciona a avaliação encontrada ao modelo da tabela
+                Object[] row = {avaliacaoEncontrada.getId(), avaliacaoEncontrada.getDescricao(), avaliacaoEncontrada.getPeso()};
+                model.addRow(row);
+            } else {
+                // Se a avaliação não foi encontrada, exibe uma mensagem de erro
+                JOptionPane.showMessageDialog(this, "Avaliação não encontrada!");
+            }
+            
+        } catch (NumberFormatException e) {
+            // Se o ID da avaliação não puder ser convertido para um número inteiro válido,
+            // exibe uma mensagem de erro
+            JOptionPane.showMessageDialog(null, "O ID da avaliação deve ser um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        // Se o campo de ID da avaliação estiver vazio, exibe uma mensagem de erro
+        JOptionPane.showMessageDialog(null, "Digite um ID de avaliação válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    } 
     }//GEN-LAST:event_botaoPesquisarActionPerformed
 
     /**
@@ -457,15 +509,14 @@ public class Avaliacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Descricao;
+    private javax.swing.JTextField IDAvalicao;
+    private javax.swing.JTextField Peso;
     private javax.swing.JTable Tabela;
     private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoPesquisar;
     private javax.swing.JButton botaoSalvar;
-    private javax.swing.JTextField campoEmail;
-    private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoPesquisar;
-    private javax.swing.JTextField campoTelefone;
-    private javax.swing.JTextField campoTelefone1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -475,7 +526,6 @@ public class Avaliacao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -483,4 +533,26 @@ public class Avaliacao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+   
+private boolean verificarIdAvaliacaoExistente(int id) {
+    boolean idExistente = false;
+
+    try (Connection connection = DatabaseUtil.getConnection()) {
+        String sql = "SELECT COUNT(*) AS total FROM avaliacao WHERE id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, id);
+
+        ResultSet resultSet = statement.executeQuery();
+
+        if (resultSet.next()) {
+            int total = resultSet.getInt("total");
+            idExistente = total > 0;
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+
+    return idExistente;
+}
 }

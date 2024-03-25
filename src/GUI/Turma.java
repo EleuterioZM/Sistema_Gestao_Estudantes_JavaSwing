@@ -5,6 +5,11 @@
  */
 package GUI;
 
+import DAO.TurmaDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Eleuterio_Mabecuane
@@ -38,9 +43,9 @@ public class Turma extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        campoCurso = new javax.swing.JTextField();
+        IDTurma = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        campoNomeCurso = new javax.swing.JTextField();
+        Descricao = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
@@ -146,15 +151,17 @@ public class Turma extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
         jLabel3.setText("ID Turma");
 
         jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
         jLabel4.setText("Descricao");
 
-        campoNomeCurso.addActionListener(new java.awt.event.ActionListener() {
+        Descricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeCursoActionPerformed(evt);
+                DescricaoActionPerformed(evt);
             }
         });
 
@@ -253,11 +260,11 @@ public class Turma extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(campoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(IDTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(109, 109, 109)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -272,8 +279,8 @@ public class Turma extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IDTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -329,14 +336,7 @@ public class Turma extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-            this.dispose();
-    
-    // Criar uma instância da página desejada (substitua "NomeDaPagina" pelo nome da sua classe)
-        Estudante Estudante = new Estudante();
-    
-    // Tornar a página desejada visível
-    Estudante.setVisible(true);
+      
     
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -362,23 +362,85 @@ public class Turma extends javax.swing.JFrame {
     Disciplina.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void campoNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeCursoActionPerformed
+    private void DescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescricaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeCursoActionPerformed
+    }//GEN-LAST:event_DescricaoActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-        // Verifica se todos os campos obrigatórios estão preenchidos
+     // Coletando os dados do formulário
+    String descricao = Descricao.getText();
+    String idT = IDTurma.getText();
 
-        // Continue com o resto do seu código aqui...
+    // Verificando se todos os campos foram preenchidos
+    if (idT.isEmpty() || descricao.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Preencha todos os campos.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-        // TODO add your handling code here:
+    try {
+        // Criando um objeto Turma com os dados coletados
+        Model.Turma turma = new Model.Turma();
+        turma.setId(Integer.parseInt(idT)); // Convertendo o ID para inteiro
+        turma.setDescricao(descricao);
+
+        // Chamando o DAO para inserir a turma no banco de dados
+        TurmaDAO turmaDAO = new TurmaDAO();
+        turmaDAO.inserir(turma);
+
+        // Exibindo uma mensagem de sucesso
+        JOptionPane.showMessageDialog(this, "Turma salva com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+        // Limpar os campos do formulário após salvar
+        // Limpar os campos do formulário após salvar
+        IDTurma.setText("");
+        Descricao.setText("");
+
+        // Limpar a tabela de pesquisa
+        DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+        model.setRowCount(0);
+
+            
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Certifique-se de inserir um ID de turma válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Ocorreu um erro ao salvar a turma.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-        // Obtém o texto digitado no campo de pesquisa
-        String idString = campoPesquisar.getText();
+      String idTurmaString = campoPesquisar.getText();
 
-        // Verifica se o campo de ID não está vazio
+    if (!idTurmaString.isEmpty()) {
+        try {
+            int idTurma = Integer.parseInt(idTurmaString);
+            
+            TurmaDAO turmaDAO = new TurmaDAO();
+            
+            // Verificar se existem dados associados à turma antes de tentar excluir
+            if (turmaDAO.verificarEstudantesPorTurma(idTurma)) {
+                JOptionPane.showMessageDialog(this, "Existem estudantes associados a esta turma. Não é possível excluí-la.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            // Se não houver dados associados, prosseguir com a exclusão
+            turmaDAO.excluir(idTurma);
+            JOptionPane.showMessageDialog(this, "Turma excluída com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            
+            // Limpar os campos após excluir a turma
+            IDTurma.setText("");
+            Descricao.setText("");  
+           
+            
+            //Limpar a tabela após excluir a turma (se houver uma tabela associada)
+             DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+            model.setRowCount(0);
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "O ID da turma deve ser um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Digite um ID de turma válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void campoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPesquisarActionPerformed
@@ -386,13 +448,45 @@ public class Turma extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPesquisarActionPerformed
 
     private void botaoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarActionPerformed
-        // Recupera o valor do campo de pesquisa
+    // Obtém o ID da turma digitado no campo de pesquisa
+String idTurmaString = campoPesquisar.getText();
 
-        String idString = campoPesquisar.getText();
+// Verifica se o campo de ID da turma não está vazio
+if (!idTurmaString.isEmpty()) {
+    try {
+        // Converte a String do ID da turma para um número inteiro
+        int idTurma = Integer.parseInt(idTurmaString);
+        
+        // Cria um objeto TurmaDAO
+        TurmaDAO turmaDAO = new TurmaDAO();
+        
+        // Busca a turma pelo ID
+        Model.Turma turmaEncontrada = turmaDAO.buscarPorId(idTurma);
 
-        // Verifica se o campo de pesquisa não está vazio
+        // Verifica se a turma foi encontrada
+        if (turmaEncontrada != null) {
+            // Limpa o modelo da tabela
+            DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+            model.setRowCount(0); // Limpa todas as linhas da tabela
+            
+            // Adiciona a turma encontrada ao modelo da tabela
+            Object[] row = {turmaEncontrada.getId(), turmaEncontrada.getDescricao()};
+            model.addRow(row);
+        } else {
+            // Se a turma não foi encontrada, exibe uma mensagem de erro
+            JOptionPane.showMessageDialog(this, "Turma não encontrada!");
+        }
+        
+    } catch (NumberFormatException e) {
+        // Se o ID da turma não puder ser convertido para um número inteiro válido,
+        // exibe uma mensagem de erro
+        JOptionPane.showMessageDialog(null, "O ID da turma deve ser um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+} else {
+    // Se o campo de ID da turma estiver vazio, exibe uma mensagem de erro
+    JOptionPane.showMessageDialog(null, "Digite um ID de turma válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+}
 
-        // TODO add your handling code here:
     }//GEN-LAST:event_botaoPesquisarActionPerformed
 
     /**
@@ -431,12 +525,12 @@ public class Turma extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Descricao;
+    private javax.swing.JTextField IDTurma;
     private javax.swing.JTable Tabela;
     private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoPesquisar;
     private javax.swing.JButton botaoSalvar;
-    private javax.swing.JTextField campoCurso;
-    private javax.swing.JTextField campoNomeCurso;
     private javax.swing.JTextField campoPesquisar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

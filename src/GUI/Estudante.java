@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import DAO.EstudanteDAO;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Eleuterio_Mabecuane
@@ -38,14 +42,14 @@ public class Estudante extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        campoCurso = new javax.swing.JTextField();
+        NumerodeMatricula = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        campoNomeCurso1 = new javax.swing.JTextField();
-        campoNomeCurso2 = new javax.swing.JTextField();
+        EnderecodoEstudante = new javax.swing.JTextField();
+        TelefonedoEstudante = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        campoNomeCurso = new javax.swing.JTextField();
+        NomedoEstudante = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        campoNomeCurso3 = new javax.swing.JTextField();
+        Apelido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela = new javax.swing.JTable();
@@ -161,33 +165,33 @@ public class Estudante extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
         jLabel5.setText("Endereco do Estudante");
 
-        campoNomeCurso1.addActionListener(new java.awt.event.ActionListener() {
+        EnderecodoEstudante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeCurso1ActionPerformed(evt);
+                EnderecodoEstudanteActionPerformed(evt);
             }
         });
 
-        campoNomeCurso2.addActionListener(new java.awt.event.ActionListener() {
+        TelefonedoEstudante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeCurso2ActionPerformed(evt);
+                TelefonedoEstudanteActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
         jLabel6.setText("Telefone do Estudante");
 
-        campoNomeCurso.addActionListener(new java.awt.event.ActionListener() {
+        NomedoEstudante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeCursoActionPerformed(evt);
+                NomedoEstudanteActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
         jLabel4.setText("Nome do Estudante");
 
-        campoNomeCurso3.addActionListener(new java.awt.event.ActionListener() {
+        Apelido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeCurso3ActionPerformed(evt);
+                ApelidoActionPerformed(evt);
             }
         });
 
@@ -292,24 +296,24 @@ public class Estudante extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoNomeCurso1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EnderecodoEstudante, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NumerodeMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(63, 63, 63)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoNomeCurso2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TelefonedoEstudante, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NomedoEstudante, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(81, 81, 81)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoNomeCurso3, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Apelido, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,23 +325,23 @@ public class Estudante extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(campoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(NumerodeMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(campoNomeCurso3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Apelido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(campoNomeCurso1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(EnderecodoEstudante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(campoNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NomedoEstudante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(campoNomeCurso2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TelefonedoEstudante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
@@ -368,9 +372,7 @@ public class Estudante extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1304, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,35 +430,109 @@ public class Estudante extends javax.swing.JFrame {
     Disciplina.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void campoNomeCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeCurso1ActionPerformed
+    private void EnderecodoEstudanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnderecodoEstudanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeCurso1ActionPerformed
+    }//GEN-LAST:event_EnderecodoEstudanteActionPerformed
 
-    private void campoNomeCurso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeCurso2ActionPerformed
+    private void TelefonedoEstudanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefonedoEstudanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeCurso2ActionPerformed
+    }//GEN-LAST:event_TelefonedoEstudanteActionPerformed
 
-    private void campoNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeCursoActionPerformed
+    private void NomedoEstudanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomedoEstudanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeCursoActionPerformed
+    }//GEN-LAST:event_NomedoEstudanteActionPerformed
 
-    private void campoNomeCurso3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeCurso3ActionPerformed
+    private void ApelidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApelidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeCurso3ActionPerformed
+    }//GEN-LAST:event_ApelidoActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-        // Verifica se todos os campos obrigatórios estão preenchidos
+   // Coletando os dados do formulário
+    String nrMatriculaText = NumerodeMatricula.getText();
+    String nome = NomedoEstudante.getText();
+    String apelido = Apelido.getText();
+    String endereco = EnderecodoEstudante.getText();
+    String contacto = TelefonedoEstudante.getText();
 
-        // Continue com o resto do seu código aqui...
+    // Verificando se todos os campos foram preenchidos
+    if (nrMatriculaText.isEmpty() || nome.isEmpty() || apelido.isEmpty() || endereco.isEmpty() || contacto.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Preencha todos os campos.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-        // TODO add your handling code here:
+    try {
+        // Convertendo o número de matrícula para o tipo inteiro
+        int nrMatricula = Integer.parseInt(nrMatriculaText);
+
+        // Verificando se o número de matrícula já existe na base de dados
+        EstudanteDAO estudanteDAO = new EstudanteDAO();
+        if (estudanteDAO.verificarMatriculaExistente(nrMatricula)) {
+            JOptionPane.showMessageDialog(this, "O número de matrícula já existe. Por favor, escolha outro número.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Criando um objeto Estudante com os dados coletados
+        Model.Estudante estudante = new Model.Estudante();
+        estudante.setNrMatricula(nrMatricula);
+        estudante.setNome(nome);
+        estudante.setApelido(apelido);
+        estudante.setEndereco(endereco);
+        estudante.setContacto(contacto);
+
+        // Chamando o DAO para inserir o estudante no banco de dados
+        estudanteDAO.inserir(estudante);
+
+        // Exibindo uma mensagem de sucesso
+        JOptionPane.showMessageDialog(this, "Estudante salvo com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+        // Limpar os campos do formulário após salvar
+        NumerodeMatricula.setText("");
+        NomedoEstudante.setText("");
+        Apelido.setText("");
+        EnderecodoEstudante.setText("");
+        TelefonedoEstudante.setText("");
+
+        DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+        model.setRowCount(0);
+        
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Certifique-se de inserir um número de matrícula válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-        // Obtém o texto digitado no campo de pesquisa
-        String idString = campoPesquisar.getText();
+      // Coletando o número de matrícula do estudante a ser excluído
+String matriculaString = campoPesquisar.getText();
 
-        // Verifica se o campo de ID não está vazio
+// Verificando se o campo de matrícula não está vazio
+if (!matriculaString.isEmpty()) {
+    try {
+        // Convertendo a String da matrícula para um número inteiro
+        int nrMatricula = Integer.parseInt(matriculaString);
+        
+        // Chamando o DAO para excluir o estudante do banco de dados
+        EstudanteDAO estudanteDAO = new EstudanteDAO();
+        estudanteDAO.excluir(nrMatricula);
+        JOptionPane.showMessageDialog(this, "Estudante excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        // Limpar os campos do formulário após excluir
+        NumerodeMatricula.setText("");
+        NomedoEstudante.setText("");
+        Apelido.setText("");
+        EnderecodoEstudante.setText("");
+        TelefonedoEstudante.setText("");
+         // Limpar a tabela após excluir a avaliação
+                DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+                model.setRowCount(0);
+    } catch (NumberFormatException e) {
+        // Se a matrícula não puder ser convertida para um número inteiro válido,
+        // exibir uma mensagem de erro
+        JOptionPane.showMessageDialog(null, "A matrícula deve ser um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+} else {
+    // Se o campo de matrícula estiver vazio, exibir uma mensagem de erro
+    JOptionPane.showMessageDialog(null, "Digite uma matrícula válida.", "Erro", JOptionPane.ERROR_MESSAGE);
+}
+
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void campoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPesquisarActionPerformed
@@ -464,13 +540,42 @@ public class Estudante extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPesquisarActionPerformed
 
     private void botaoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarActionPerformed
-        // Recupera o valor do campo de pesquisa
-
-        String idString = campoPesquisar.getText();
-
-        // Verifica se o campo de pesquisa não está vazio
-
-        // TODO add your handling code here:
+        // Obtém o número de matrícula digitado no campo de pesquisa
+    String matriculaString = campoPesquisar.getText();
+    
+    // Verifica se o campo de matrícula não está vazio
+    if (!matriculaString.isEmpty()) {
+        try {
+            // Converte a String da matrícula para um número inteiro
+            int nrMatricula = Integer.parseInt(matriculaString);
+            
+            // Cria um objeto Estudante com o número de matrícula especificado
+            EstudanteDAO estudanteDAO = new EstudanteDAO();
+            Model.Estudante estudanteEncontrado = estudanteDAO.buscarPorMatricula(nrMatricula);
+            
+            // Verifica se o estudante foi encontrado
+            if (estudanteEncontrado != null) {
+                // Limpa o modelo da tabela
+                DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
+                model.setRowCount(0); // Limpa todas as linhas da tabela
+                
+                // Adiciona o estudante encontrado ao modelo da tabela
+                Object[] row = {estudanteEncontrado.getNrMatricula(), estudanteEncontrado.getNome(), estudanteEncontrado.getApelido(), estudanteEncontrado.getEndereco(), estudanteEncontrado.getContacto()};
+                model.addRow(row);
+            } else {
+                // Se o estudante não foi encontrado, exibe uma mensagem de erro
+                JOptionPane.showMessageDialog(this, "Estudante não encontrado!");
+            }
+            
+        } catch (NumberFormatException e) {
+            // Se a matrícula não puder ser convertida para um número inteiro válido,
+            // exibe uma mensagem de erro
+            JOptionPane.showMessageDialog(null, "A matrícula deve ser um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        // Se o campo de matrícula estiver vazio, exibe uma mensagem de erro
+        JOptionPane.showMessageDialog(null, "Digite uma matrícula válida.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_botaoPesquisarActionPerformed
 
     /**
@@ -499,6 +604,7 @@ public class Estudante extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Estudante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -509,15 +615,15 @@ public class Estudante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Apelido;
+    private javax.swing.JTextField EnderecodoEstudante;
+    private javax.swing.JTextField NomedoEstudante;
+    private javax.swing.JTextField NumerodeMatricula;
     private javax.swing.JTable Tabela;
+    private javax.swing.JTextField TelefonedoEstudante;
     private javax.swing.JButton botaoExcluir;
     private javax.swing.JButton botaoPesquisar;
     private javax.swing.JButton botaoSalvar;
-    private javax.swing.JTextField campoCurso;
-    private javax.swing.JTextField campoNomeCurso;
-    private javax.swing.JTextField campoNomeCurso1;
-    private javax.swing.JTextField campoNomeCurso2;
-    private javax.swing.JTextField campoNomeCurso3;
     private javax.swing.JTextField campoPesquisar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;

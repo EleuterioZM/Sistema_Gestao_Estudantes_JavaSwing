@@ -1,20 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-/**
- *
- * @author Eleuterio_Mabecuane
- */
 public class Disciplina {
     private int id;
     private String nome;
     private int chs; // Carga horária semanal
     private int credito; // Créditos da disciplina
 
+    // Construtor padrão
+    public Disciplina() {
+    }
+
+    // Construtor com todos os atributos
     public Disciplina(int id, String nome, int chs, int credito) {
         this.id = id;
         this.nome = nome;
@@ -22,12 +18,7 @@ public class Disciplina {
         this.credito = credito;
     }
 
-    @Override
-    public String toString() {
-        return "Disciplina{" + "id=" + id + ", nome=" + nome + ", chs=" + chs + ", credito=" + credito + '}';
-    }
-
-    // Construtor, getters e setters
+    // Getters e Setters
 
     public int getId() {
         return id;
@@ -60,5 +51,15 @@ public class Disciplina {
     public void setCredito(int credito) {
         this.credito = credito;
     }
-}
 
+    // Método toString para representação em String da disciplina
+    @Override
+    public String toString() {
+        return "Disciplina{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", chs=" + chs +
+                ", credito=" + credito +
+                '}';
+    }
+}
