@@ -59,6 +59,7 @@ public class Estudante extends javax.swing.JFrame {
         campoPesquisar = new javax.swing.JTextField();
         botaoPesquisar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        Actualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -257,6 +258,14 @@ public class Estudante extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
 
+        Actualizar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Actualizar.setText("Actualizar");
+        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -266,23 +275,27 @@ public class Estudante extends javax.swing.JFrame {
                 .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
+                .addComponent(Actualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(botaoPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(campoPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addComponent(campoPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoPesquisar)
-                    .addComponent(botaoPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(botaoPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(botaoSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -559,6 +572,13 @@ if (!matriculaString.isEmpty()) {
                 DefaultTableModel model = (DefaultTableModel) Tabela.getModel();
                 model.setRowCount(0); // Limpa todas as linhas da tabela
                 
+                 NumerodeMatricula.setText(String.valueOf(estudanteEncontrado.getNrMatricula()));
+                NomedoEstudante.setText(estudanteEncontrado.getNome());
+                Apelido.setText(estudanteEncontrado.getApelido());
+                EnderecodoEstudante.setText(estudanteEncontrado.getEndereco());
+                TelefonedoEstudante.setText(estudanteEncontrado.getContacto());
+                
+         
                 // Adiciona o estudante encontrado ao modelo da tabela
                 Object[] row = {estudanteEncontrado.getNrMatricula(), estudanteEncontrado.getNome(), estudanteEncontrado.getApelido(), estudanteEncontrado.getEndereco(), estudanteEncontrado.getContacto()};
                 model.addRow(row);
@@ -577,6 +597,40 @@ if (!matriculaString.isEmpty()) {
         JOptionPane.showMessageDialog(null, "Digite uma matrícula válida.", "Erro", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_botaoPesquisarActionPerformed
+
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+         // Coleta os dados atualizados dos campos do formulário
+    int nrMatricula = Integer.parseInt(NumerodeMatricula.getText());
+    String nome = NomedoEstudante.getText();
+    String apelido = Apelido.getText();
+    String endereco = EnderecodoEstudante.getText();
+    String contacto = TelefonedoEstudante.getText();
+
+    // Cria um objeto Estudante com os dados atualizados
+//    Model.Estudante estudanteAtualizado = new Model.Estudante(nrMatricula, nome, apelido, endereco, contacto);
+    Model.Estudante estudanteAtualizado = new Model.Estudante();
+estudanteAtualizado.setNrMatricula(nrMatricula);
+estudanteAtualizado.setNome(nome);
+estudanteAtualizado.setApelido(apelido);
+estudanteAtualizado.setEndereco(endereco);
+estudanteAtualizado.setContacto(contacto);
+
+
+    // Chama o método atualizar do EstudanteDAO para atualizar os dados no banco de dados
+    EstudanteDAO estudanteDAO = new EstudanteDAO();
+    estudanteDAO.atualizar(estudanteAtualizado);
+    
+    // Exibe uma mensagem de sucesso
+    JOptionPane.showMessageDialog(this, "Estudante atualizado com sucesso!");
+
+    // Limpa todos os campos do formulário após a atualização
+    NumerodeMatricula.setText("");
+    NomedoEstudante.setText("");
+    Apelido.setText("");
+    EnderecodoEstudante.setText("");
+    TelefonedoEstudante.setText(""); 
+         
+    }//GEN-LAST:event_ActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -615,6 +669,7 @@ if (!matriculaString.isEmpty()) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actualizar;
     private javax.swing.JTextField Apelido;
     private javax.swing.JTextField EnderecodoEstudante;
     private javax.swing.JTextField NomedoEstudante;

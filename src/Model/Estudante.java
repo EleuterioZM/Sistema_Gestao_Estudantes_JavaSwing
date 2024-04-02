@@ -21,6 +21,9 @@ public class Estudante {
         return "Estudante{" + "nrMatricula=" + nrMatricula + ", nome=" + nome + ", apelido=" + apelido + ", endereco=" + endereco + ", contacto=" + contacto + '}';
     }
 
+    public Estudante() {
+    }
+
     public int getNrMatricula() {
         return nrMatricula;
     }
