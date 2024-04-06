@@ -20,6 +20,7 @@ public class Disciplina extends javax.swing.JFrame {
      */
     public Disciplina() {
         initComponents();
+         setResizable(false);
     }
 
     /**

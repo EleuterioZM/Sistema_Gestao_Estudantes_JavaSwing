@@ -27,6 +27,7 @@ public class Avaliacao extends javax.swing.JFrame {
      */
     public Avaliacao() {
         initComponents();
+        setResizable(false);
     }
 
     /**

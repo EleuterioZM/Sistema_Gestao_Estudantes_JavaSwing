@@ -20,6 +20,7 @@ public class Estudante extends javax.swing.JFrame {
      */
     public Estudante() {
         initComponents();
+         setResizable(false);
     }
 
     /**

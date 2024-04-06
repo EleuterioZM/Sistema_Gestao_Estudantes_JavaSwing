@@ -21,6 +21,7 @@ public class Turma extends javax.swing.JFrame {
      */
     public Turma() {
         initComponents();
+         setResizable(false);
     }
 
     /**

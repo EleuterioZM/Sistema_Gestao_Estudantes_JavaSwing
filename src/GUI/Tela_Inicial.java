@@ -20,6 +20,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
      */
     public Tela_Inicial() {
         initComponents();
+         setResizable(false);
     }
 
     /**

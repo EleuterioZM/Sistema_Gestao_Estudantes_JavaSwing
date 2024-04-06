@@ -23,6 +23,7 @@ public class Realiza extends javax.swing.JFrame {
      */
     public Realiza() {
         initComponents();
+         setResizable(false);
     }
 
     /**

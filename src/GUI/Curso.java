@@ -20,6 +20,7 @@ public class Curso extends javax.swing.JFrame {
      */
     public Curso() {
         initComponents();
+         setResizable(false);
     }
 
     /**
